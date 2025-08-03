@@ -131,7 +131,7 @@ if ($isAdmin) {
 </div>
 <?php if (isset($_SESSION['show_login_alert'])): ?>
 <script>
-    alert('Login successful! Welcome back, <?= htmlspecialchars($_SESSION['name'] ?? 'User') ?>');
+    alert('Login successful! Welcome back, <?= htmlspecialchars($username ?? 'User') ?>');
 </script>
 <?php 
     unset($_SESSION['show_login_alert']); // Clear the flag so it doesn't show again
