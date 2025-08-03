@@ -32,16 +32,19 @@ if ($isAdmin) {
     <meta charset="UTF-8">
     <title>Vehicle Request Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="modal-container">
     <div class="modal">
         <header class="modal-header">
-            <h2>Vehicle Request System</h2>
+            <h1>Vehicle Request System</h1>
             <div class="auth-links">
                 <?php if ($username): ?>
                     <span>Welcome, <?= htmlspecialchars($username) ?>!</span>
-                    <a href="logout.php">Logout</a>
+                    <a href="logout.php" class="logout-button">Logout</a>
                 <?php else: ?>
                     <a href="login.php">Login</a>
                 <?php endif; ?>
@@ -79,16 +82,16 @@ if ($isAdmin) {
                         <td>
                             <?php if ($isAdmin): ?>
                                 <?php if ($vehicle['status'] === 'returning'): ?>
-                                    <a href="process_return.php?id=<?= $vehicle['id'] ?>">Accept return</a> |
-                                    <?php endif; ?>
+                                    <a href="process_return.php?id=<?= $vehicle['id'] ?>" onclick="return confirm('Return confirmed?')">Accept return</a> |
+                                <?php endif; ?>
                                 <a href="admin/edit_vehicle.php?id=<?= $vehicle['id'] ?>">Edit</a> |
                                 <a href="admin/delete_vehicle.php?id=<?= $vehicle['id'] ?>" onclick="return confirm('Delete vehicle?')">Delete</a>
                             <?php elseif ($isEmployee && $vehicle['status'] === 'available'): ?>
-                                <a href="request_vehicle.php?id=<?= $vehicle['id'] ?>" class="btn-request">Request Vehicle</a>
-                            <?php elseif ($vehicle['status'] === 'assigned' && $vehicle['assigned_to'] === $_SESSION['user']['name']): ?>
-                                <a href="return_vehicle.php?id=<?= $vehicle['id'] ?>" class="btn-return">Return Vehicle</a>
+                                <a href="request_vehicle.php?id=<?= $vehicle['id'] ?>" >Request Vehicle</a>
+                            <?php elseif ($vehicle['status'] === 'assigned' && $vehicle['assigned_to'] === $username): ?>
+                                <a href="return_vehicle.php?id=<?= $vehicle['id'] ?>" >Return Vehicle</a>
                             <?php elseif (!isset($_SESSION['user']) && $vehicle['status'] === 'available'): ?>
-                                <a href="login.php" class="btn-request">Request Vehicle</a>
+                                <a href="login.php" >Request Vehicle</a>
                             <?php else: ?>
                                 -
                             <?php endif; ?>

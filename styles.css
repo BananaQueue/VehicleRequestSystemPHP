@@ -1,3 +1,22 @@
+/*
+Color Palette
+Slate-ish:     #1B3C53
+Blueish:       #799EFF
+Cream:         #FEFFC4
+Light Mustard: #FFDE63
+Orange-ish:    #FFBC4C
+Gray:          #E5E0D8
+*/
+:root{
+    --slate-ish: #082a42;
+    --blue-ish:  #1d69b6;
+    --clay-ish:  #4682A9;
+    --cream-ish: #e2e2af;
+    --gray-ish:  #E5E0D8;
+
+}
+
+
 /* General Reset */
 * {
     margin: 0;
@@ -8,33 +27,45 @@
 /* Body & Modal Container */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f6f8fa;
+    background-color: #E5E0D8;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    color:#1B3C53;
 }
 
 .modal-container {
-    background-color: #ffffff;
+    background-color: var(--blue-ish);
     border-radius: 12px;
     padding: 40px;
     width: 90%;
     max-width: 1000px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(14, 0, 27, 0.842);
 }
 
 /* Headings */
 h1, h2, h3 {
-    margin-bottom: 20px;
+    font-family: Montserrat, sans-serif;
+    margin: 20px 0 20px 0;
     font-weight: 600;
-    color: #333;
+    color: var(--slate-ish);
+    text-align: center;
 }
+
+a{
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--slate-ish);
+}
+
 
 /* Buttons */
 button, .button-link {
-    background-color: #6c63ff;
-    color: white;
+    background-color: var(--clay-ish);
+    color: var(--slate-ish);
+    font-family: Montserrat, sans-serif;
+    font-weight: 900;
     padding: 10px 18px;
     border: none;
     border-radius: 8px;
@@ -43,11 +74,19 @@ button, .button-link {
     transition: background-color 0.2s ease;
     display: inline-block;
     font-size: 14px;
-    margin: 5px;
+    margin: 5px auto;
+    width: 50%;
+}
+button:hover{
+    background-color: var(--slate-ish);
+    color: var(--clay-ish);
+}
+.action-button{
+    color: var(--slate-ish);
 }
 
-button:hover, .button-link:hover {
-    background-color: #574fd6;
+a:hover{
+    color: var(--gray-ish);
 }
 
 /* Forms */
@@ -62,6 +101,15 @@ input, select {
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 14px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 900;
+    color: var(--slate-ish);
+    
+}
+
+label{
+    color: var(--slate-ish);
+    font-weight: 900;
 }
 
 /* Table */
@@ -69,31 +117,36 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 25px;
+    
 }
 
 th, td {
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid black ;
     text-align: left;
     font-size: 14px;
 }
 
 th {
-    background-color: #f0f0f0;
+    background-color: var(--slate-ish);
+    color: var(--cream-ish);
     font-weight: 600;
+}
+tr{
+    background-color: var(--cream-ish);
 }
 
 /* Row coloring based on status */
 tr.available {
-    background-color: #abf8ab; /* pastel green */
+    background-color: #96ca96; /* pastel green */
 }
 
 tr.assigned {
-    background-color: #f7dc93; /* pastel yellow */
+    background-color: #c5b485; /* pastel yellow */
 }
 
 tr.unavailable {
-    background-color: #fcabab; /* pastel red */
+    background-color: #af7474; /* pastel red */
 }
 
 /* Top action rows */
@@ -121,11 +174,11 @@ tr.unavailable {
 }
 
 .logout-button {
-    background-color: #ff6b6b;
+    color: var(--slate-ish);
 }
 
 .logout-button:hover {
-    background-color: #e85050;
+    color: #ff121277;
 }
 
 /* Alert messages */
