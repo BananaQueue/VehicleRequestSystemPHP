@@ -50,7 +50,7 @@ if ($isAdmin) {
 
         <section class="vehicle-section">
             <div class="section-header">
-                <h3>Available Vehicles</h3>
+                <h2>Available Vehicles</h2>
                 <?php if ($isAdmin): ?>
                     <a href="admin/add_vehicle.php" class="action-button">Add Vehicle</a>
                 <?php endif; ?>
@@ -78,6 +78,9 @@ if ($isAdmin) {
                         <td><?= htmlspecialchars($vehicle['status']) ?></td>
                         <td>
                             <?php if ($isAdmin): ?>
+                                <?php if ($vehicle['status'] === 'returning'): ?>
+                                    <a href="process_return.php?id=<?= $vehicle['id'] ?>">Accept return</a> |
+                                    <?php endif; ?>
                                 <a href="admin/edit_vehicle.php?id=<?= $vehicle['id'] ?>">Edit</a> |
                                 <a href="admin/delete_vehicle.php?id=<?= $vehicle['id'] ?>" onclick="return confirm('Delete vehicle?')">Delete</a>
                             <?php elseif ($isEmployee && $vehicle['status'] === 'available'): ?>
